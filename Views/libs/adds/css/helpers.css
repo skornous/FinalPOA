@@ -1,0 +1,16 @@
+.clickable {
+	cursor: pointer;
+}
+.bg-white {
+	background: #fff;
+}
+.star-important {
+	color:red;
+	font-size:24px;
+}
+.hover_red:hover {
+	color: red;
+}
+.placeholder {
+	color: #aaa;
+}
