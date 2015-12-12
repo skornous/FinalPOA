@@ -1,0 +1,26 @@
+{
+  "name": "poa",
+  "version": "1.0.0",
+  "description": "games",
+  "main": "init.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skornous/FinalPOA.git"
+  },
+  "author": "Hugo GENNARO <hugo.gennaro@gmail.com> (none yet)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skornous/FinalPOA/issues"
+  },
+  "homepage": "https://github.com/skornous/FinalPOA#readme",
+  "devDependencies": {
+    "babel-core": "^6.2.1",
+    "browserify": "^12.0.1"
+  },
+  "dependencies": {
+    "game-of-life-es6": "^0.2.4"
+  }
+}
