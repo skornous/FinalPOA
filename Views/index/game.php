@@ -1,7 +1,7 @@
 <div class="off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
 
-        <?php include 'side.php'; ?>
+        <?php include '/Views/templates/menu.php'; ?>
 
         <div class="off-canvas-content" data-off-canvas-content>
             <div class="title-bar hide-for-large">

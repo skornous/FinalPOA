@@ -1,45 +1,3 @@
-<<<<<<< HEAD
-<!doctype html>
-<html class="no-js" lang="en">
-<head>
-    <?php
-    include_once 'head.php';
-    ?>
-</head>
-<body>
-<div class="off-canvas-wrapper">
-    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-
-        <?php include 'side.php'; ?>
-
-        <div class="off-canvas-content" data-off-canvas-content>
-            <div class="title-bar hide-for-large">
-                <div class="title-bar-left">
-                    <button class="menu-icon" type="button" data-open="my-info"></button>
-                    <span class="title-bar-title">Games</span>
-                </div>
-            </div>
-            <div class="row small-up-2 medium-up-3 large-up-4">
-
-                <?php
-                for ($i = 0; $i < 12; $i++) {
-                    ?>
-                    <div class="column">
-                        <img class="thumbnail" src="https://media.giphy.com/media/nguAwtOo4nxAY/giphy.gif">
-                        <h5>Penguins</h5>
-                    </div>
-                <?php } ?>
-
-
-            </div>
-        </div>
-    </div>
-</div>
-<?php include 'footer.php'; ?>
-</body>
-</html>
-
-=======
 <?php
 	use \Helpers\Router\Router;
 	use \Helpers\Lang;
@@ -48,7 +6,7 @@
 	define('ROOT', dirname(__FILE__));
 
 	// Load Autoloader to use with namespaces
-	if(!defined('SITE_ROOT')) {
+	if (!defined('SITE_ROOT')) {
 		define('SITE_ROOT', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 		require(SITE_ROOT . 'Autoloader.php');
 	}
@@ -65,7 +23,7 @@
 
 	session_start();
 	$_SESSION["LAST_ACTIVITY"] = time();
-	
+
 	if (!isset($_SESSION["lang"])) {
 		$_SESSION["lang"] = new Lang();
 	}
@@ -76,7 +34,7 @@
 	$router = new Router($_GET["url"]);
 
 	// --- Need to be logged in pages ---
-	if(isset($_SESSION["User"]) && !empty($_SESSION["User"])) { // user is logged in
+	if (isset($_SESSION["User"]) && !empty($_SESSION["User"])) { // user is logged in
 		// User's
 		// -- GET methods
 		$router->get('/users/modify/:id', "User#modifyForm")->with("id", "[0-9]+");
@@ -115,19 +73,25 @@
 		$router->post('/servers/:id', "Server#modify")->with("id", "[0-9]+");
 		$router->post('/servers', "Server#create");
 
-		// Script's 
+		//Game's
+		// -- GET methods
+//		$router->get('/game/:id', "Index#game")->with("id", "[0-9]+");
+		// -- POST methods
+
+		// Script's
 		// -- GET methods
 		// $router->post('/scripts/show_datas', "Server#create");
 
 		$router->get('/disconnect', "Index#logout");
-	
+
 	} else { // no user logged in
-		
+
 		$router->get('/connect', "Index#login");
 		$router->post('/connect', "Index#register");
-	
+
 	}
 
+	$router->get('/game/:id', "Index#game")->with("id", "[0-9]+");
 	// --- No need to be logged in pages ---
 	// Scripts
 	// -- GET methods
@@ -141,4 +105,3 @@
 	$router->get('/', "Index#home");
 
 	$router->run();
->>>>>>> server

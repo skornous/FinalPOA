@@ -5,7 +5,7 @@
 	<br><br>
 	<div class="row">
 		<p class="well">
-			<?php echo $lang->PLEASE_LOGIN; ?>	
+			<?php echo $lang->PLEASE_LOGIN; ?>
 		</p>
 	</div>
 </div>

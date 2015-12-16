@@ -1,26 +1,32 @@
 <?php
 
-namespace Helpers\i18n;
-use \Exception;
+	namespace Helpers\i18n;
 
-abstract class Translations {
-	protected $_translations = array();
+	use \Exception;
 
-	public function __construct() {
-		$this->loadTranslation();
-	}
+	abstract class Translations {
 
-	public function __get($property) {
-		if (!array_key_exists($property, $this->_translations)) {
-			throw new Exception("Translation of " . $property . " does not exist for the language : " . get_class($this));
+		protected $_translations = [];
+
+		public function __construct() {
+
+			$this->loadTranslation();
 		}
-		return $this->_translations[$property];
-	}
 
-	public function __set($property, $value) {
-		throw new Exception("Action not allowed on " . get_class($this));
-		
-	}
+		public function __get($property) {
 
-	protected abstract function loadTranslation();
-}
+			if (!array_key_exists($property, $this->_translations)) {
+				throw new Exception("Translation of " . $property . " does not exist for the language : " . get_class($this));
+			}
+
+			return $this->_translations[$property];
+		}
+
+		public function __set($property, $value) {
+
+			throw new Exception("Action not allowed on " . get_class($this));
+
+		}
+
+		protected abstract function loadTranslation();
+	}

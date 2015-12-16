@@ -1,1 +1,12 @@
-{"version":3,"sources":["init.js"],"names":[],"mappings":"AAAA,CAAC,CAAC,QAAQ,CAAC,CAAC,EAAE,CAAC,OAAO,EAAE,YAAY;AAClC,MAAI,CAAC,GAAG,CAAC,CAAC,OAAO,CAAC,CAAC,IAAI,CAAC,qBAAqB,CAAC,CAAC;AAC/C,GAAC,CAAC,eAAe,CAAC,CAAC,IAAI,CAAC,CAAC,CAAC,CAAC;CAC5B,CAAC,CAAC","file":"init-compiled.js","sourcesContent":["$(document).on(\"ready\", function () {\r\n  let t = $(\"#game\").load(\"./games/testGame.js\");\r\n  $(\"#game-of-life\").html(t);\r\n});\r\n"]}
+{
+  "version": 3,
+  "sources": [
+    "init.js"
+  ],
+  "names": [],
+  "mappings": "AAAA,CAAC,CAAC,QAAQ,CAAC,CAAC,EAAE,CAAC,OAAO,EAAE,YAAY;AAClC,MAAI,CAAC,GAAG,CAAC,CAAC,OAAO,CAAC,CAAC,IAAI,CAAC,qBAAqB,CAAC,CAAC;AAC/C,GAAC,CAAC,eAAe,CAAC,CAAC,IAAI,CAAC,CAAC,CAAC,CAAC;CAC5B,CAAC,CAAC",
+  "file": "init-compiled.js",
+  "sourcesContent": [
+    "$(document).on(\"ready\", function () {\r\n  let t = $(\"#game\").load(\"./games/testGame.js\");\r\n  $(\"#game-of-life\").html(t);\r\n});\r\n"
+  ]
+}

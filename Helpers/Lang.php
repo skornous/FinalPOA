@@ -1,63 +1,69 @@
 <?php
 
-namespace Helpers;
+	namespace Helpers;
 
-use Helpers\i18n;
+	use Helpers\i18n;
 
-class Lang {
-	protected $_config;
-	// protected $_acceptedLanguages;
-	protected $_translations;
+	class Lang {
 
-	function __construct($lang = "en") {
-		$this->_config["locale"] = $lang;
-		// $this->_acceptedLanguages = array();
+		protected $_config;
+		// protected $_acceptedLanguages;
+		protected $_translations;
 
-		// foreach (scandir("helpers/i18n") as $file) {
-		// 	if ($file !== "." && $file !== ".." && $file !== "Translations") { // useless files
-		// 		// remove the extension and add the language to the list of the accepted languages
-		// 		$this->_acceptedLanguages[] = substr($file, 0, -4);
-		// 	}
-		// }
+		function __construct($lang = "en") {
 
-		$this->reloadI18N();
-	}
+			$this->_config["locale"] = $lang;
+			// $this->_acceptedLanguages = array();
 
-	function __set($property, $value) {
-		$this->_config[$property] = $value;
-		if ($property == "locale") {
+			// foreach (scandir("helpers/i18n") as $file) {
+			// 	if ($file !== "." && $file !== ".." && $file !== "Translations") { // useless files
+			// 		// remove the extension and add the language to the list of the accepted languages
+			// 		$this->_acceptedLanguages[] = substr($file, 0, -4);
+			// 	}
+			// }
+
 			$this->reloadI18N();
 		}
-	}
 
-	function __get($property) {
-		if (array_key_exists($property, $this->_config)){
-			return $this->_config[$property];
-		} else {
-			return $this->_translations->$property;
+		function __set($property, $value) {
+
+			$this->_config[$property] = $value;
+			if ($property == "locale") {
+				$this->reloadI18N();
+			}
 		}
-	}
 
-	static function supportedLanguage($language = "") {
-		if (empty($language)) {
-			return false;
-		} else {
-			foreach (scandir("helpers/i18n") as $file) {
-				if ($file !== "." && $file !== ".." && $file !== "Translations") { // useless files
-					$languageFile = $language . ".php";
-					if ($languageFile === $file) {
-						return true;
+		function __get($property) {
+
+			if (array_key_exists($property, $this->_config)) {
+				return $this->_config[$property];
+			} else {
+				return $this->_translations->$property;
+			}
+		}
+
+		static function supportedLanguage($language = "") {
+
+			if (empty($language)) {
+				return false;
+			} else {
+				foreach (scandir("helpers/i18n") as $file) {
+					if ($file !== "." && $file !== ".." && $file !== "Translations") { // useless files
+						$languageFile = $language . ".php";
+						if ($languageFile === $file) {
+							return true;
+						}
 					}
 				}
+
+				return false;
 			}
-
-			return false;
 		}
-	}
 
-	function reloadI18N() {
-		$langClass = "Helpers\\i18n\\" . $this->_config["locale"];
-		$this->_translations = new $langClass();
-	}
+		function reloadI18N() {
 
-}
+			$langClass = "Helpers\\i18n\\" . $this->_config["locale"];
+			$this->_translations = new $langClass();
+		}
+
+	}
