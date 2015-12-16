@@ -11,7 +11,7 @@
 		require(SITE_ROOT . 'Autoloader.php');
 	}
 
-	define('BASE_URL', "/POA");
+	define('BASE_URL', "/FinalPOA");
 
 	// Sessions last max 30 min
 	if (isset($_SESSION) && isset($_SESSION["LAST_ACTIVITY"])) {
@@ -35,32 +35,6 @@
 
 	// --- Need to be logged in pages ---
 	if (isset($_SESSION["User"]) && !empty($_SESSION["User"])) { // user is logged in
-		// User's
-		// -- GET methods
-		$router->get('/users/modify/:id', "User#modifyForm")->with("id", "[0-9]+");
-		$router->get('/users/delete/:id', "User#delete")->with("id", "[0-9]+");
-		$router->get('/users/create', "User#createForm");
-		$router->get('/users/change_password', "User#changePasswordForm");
-		$router->get('/users/:id', "User#show")->with("id", "[0-9]+");
-		$router->get('/users', "User#showAll");
-		// -- POST methods
-		$router->post('/users/:id', "User#modify")->with("id", "[0-9]+");
-		$router->post('/users/change_password', "User#changePassword");
-		$router->post('/users', "User#create");
-
-		// Data's
-		// -- GET methods
-		$router->get('/datas/real_time', "Data#showRTDatasForm");
-		$router->get('/datas/stocked', "Data#showSDatasForm");
-		$router->get('/datas/:team/modify/:id', "Data#modifyForm")->with("team", "[\w]+")->with("id", "[0-9]+");
-		$router->get('/datas/:team/delete/:id', "Data#delete")->with("team", "[\w]+")->with("id", "[0-9]+");
-		$router->get('/datas/:team/create', "Data#createForm")->with("team", "[\w]+");
-		$router->get('/datas/:team', "Data#showDatasForTeam")->with("team", "[\w]+");
-		// -- POST methods
-		$router->post('/datas/real_time', "Data#showRTDatas");
-		$router->post('/datas/stocked', "Data#showSDatas");
-		$router->post('/datas/:team/:id', "Data#modify")->with("team", "[\w]+")->with("id", "[0-9]+");
-		$router->post('/datas/:team', "Data#create")->with("team", "[\w]+");
 
 		// Server's
 		// -- GET methods
@@ -91,16 +65,16 @@
 
 	}
 
-	$router->get('/game/:id', "Index#game")->with("id", "[0-9]+");
+
 	// --- No need to be logged in pages ---
-	// Scripts
-	// -- GET methods
-	$router->get('/scripts/save_datas', "Script#saveDatas");
+
+	// Games
+	$router->get('/game/:id', "Index#game")->with("id", "[0-9]+");
 
 	// Errors
 	$router->get('/404', "Error#_404");
 	$router->get('/403', "Error#_403");
-	$router->get('/:page', "Error#_404")->with("page", "[\w]+");
+	$router->get('/:page', "Error#_404")->with("page", "[\w]+");;
 	// Home 
 	$router->get('/', "Index#home");
 

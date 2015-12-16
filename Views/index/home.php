@@ -12,10 +12,12 @@
 			</div>
 			<div class="row small-up-2 medium-up-3 large-up-4">
 
-				<?php for ($i = 0; $i < 12; $i++) { ?>
+				<?php for ($i = 1; $i < 9; $i++) { ?>
 					<div class="column">
-						<img class="thumbnail" src="https://media.giphy.com/media/nguAwtOo4nxAY/giphy.gif">
-						<h5>Penguins</h5>
+						<a href="<?php echo BASE_URL."/game/".$i;?>">
+							<img class="thumbnail" src="<?php echo BASE_URL."/img/harf01.jpg" ?>">
+							<h5>Game <?php echo $i; ?></h5>
+						</a>
 					</div>
 				<?php } ?>
 			</div>
